@@ -29,3 +29,12 @@ form {
 .tasks {
     padding: 15px
 }
+
+img[src*="icon.png"]{
+    width: 1.25rem;
+    height: auto;
+}
+
+.tasks div {
+    font-size: 1.25rem;
+}
