@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 1000px;
+    padding: 25px;
+}
+
+.add-field {
+    border: none;
+}
+
+.add-button {
+    background-color: lightseagreen;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+form {
+    margin-top: auto;
+}
