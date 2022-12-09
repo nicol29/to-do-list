@@ -25,3 +25,7 @@ body {
 form {
     margin-top: auto;
 }
+
+.tasks {
+    padding: 15px
+}
