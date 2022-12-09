@@ -22,5 +22,10 @@ let appendToDoc = (taskDesc) => {
     div.innerText = taskDesc;
 }
 
-console.log(localStorage);
-console.log(JSON.parse(localStorage.getItem('tasks')));
+for(let i = 0; i < tasks.length; i++){
+    let div = document.createElement('div');
+    toDoContent.appendChild(div)
+    div.innerText = tasks[i].taskDesc;
+}
+
+// localStorage.setItem('tasks', JSON.stringify(tasks));
