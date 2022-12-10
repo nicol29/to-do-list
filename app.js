@@ -8,11 +8,6 @@ let editIcon;
 let deleteIcon;
 
 
-submitButton.addEventListener('click', () => {
-    addToStorage(inputField.value);
-    inputField.value = '';
-});
-
 let addToStorage = (taskDesc) => {
     tasks.push({taskDesc});
     appendToDoc(taskDesc)
@@ -21,7 +16,9 @@ let addToStorage = (taskDesc) => {
 }
 
 let appendToDoc = (taskDesc) => {
+    let line = document.createElement('hr');
     let div = document.createElement('div');
+
     div.classList.add('task-description')
     toDoContent.appendChild(div)
     div.innerText = taskDesc;
@@ -31,6 +28,7 @@ let appendToDoc = (taskDesc) => {
 
     div.appendChild(editIcon);
     div.appendChild(deleteIcon);
+    div.appendChild(line);
 
     editIcon.src = './images/edit_icon.png';
     deleteIcon.src = './images/delete_icon.png';
@@ -45,13 +43,16 @@ let deleteTask = (whatTaskToDelete) => {
             tasks.splice(i, 1);
 
             localStorage.setItem('tasks', JSON.stringify(tasks));
-            whatTaskToDelete.remove();
+
+            toDoContent.removeChild(whatTaskToDelete);
         }
     }
 }
 
 for(let i = 0; i < tasks.length; i++){
     let div = document.createElement('div');
+    let line = document.createElement('hr');
+
     div.classList.add('task-description')
     toDoContent.appendChild(div)
     div.innerText = tasks[i].taskDesc;
@@ -61,15 +62,22 @@ for(let i = 0; i < tasks.length; i++){
 
     div.appendChild(editIcon);
     div.appendChild(deleteIcon);
+    div.appendChild(line);
 
     editIcon.src = './images/edit_icon.png';
     deleteIcon.src = './images/delete_icon.png';
 }
 
+
+submitButton.addEventListener('click', () => {
+    addToStorage(inputField.value);
+    inputField.value = '';
+});
+
 toDoContent.addEventListener('click', (e) => {
     if(e.target.matches('img[src*="edit"]')) {
 
-    } else{
+    } else if(e.target.matches('img[src*="delete"]')){
         deleteTask(e.target.parentNode);
     }
 })

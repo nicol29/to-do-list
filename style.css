@@ -16,15 +16,17 @@ body {
     font-size: 1.25rem;
 }
 
+form {
+    display: flex;
+    padding: 5px 0 5px 0;
+}
+
 .add-button {
+    margin-left: auto;
     background-color: lightseagreen;
     padding: 5px 10px 5px 10px;
     border: 1px solid black;
     border-radius: 5px;
-}
-
-form {
-    padding: 5px 0 5px 0;
 }
 
 .tasks {
@@ -32,8 +34,10 @@ form {
 }
 
 .task-description {
-    padding: 5px 0 5px 0;
+    padding: 5px 0 10px 0;
     display: flex;
+    flex-wrap: wrap;
+    gap: 2.5px;
 }
 
 img[src^="./images/edit"]{
@@ -57,5 +61,11 @@ img[src^="./images/delete"]{
     font-size: 1.25rem;
 }
 
+hr {
+    margin: 0;
+    width: 100%;
+}
 
-
+input {
+    outline: none;
+}
