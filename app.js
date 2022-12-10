@@ -2,7 +2,11 @@ let submitButton = document.querySelector('.add-button');
 let inputField = document.querySelector('.add-field');
 let toDoContent = document.querySelector('.tasks');
 let form = document.querySelector('form');
+
+let isHovering = false;
 let allTaskDivs;
+let editIcon;
+let deleteIcon;
 
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
@@ -20,37 +24,38 @@ let addToStorage = (taskDesc) => {
 }
 
 let appendToDoc = (taskDesc) => {
-    const editIcon = document.createElement('img')
-    const deleteIcon = document.createElement('img')
-    editIcon.src = './images/edit_icon.png';
-    deleteIcon.src = './images/delete_icon.png';
-
     let div = document.createElement('div');
     div.classList.add('task-description')
     toDoContent.appendChild(div)
     div.innerText = taskDesc;
+
+    editIcon = document.createElement('img')
+    deleteIcon = document.createElement('img')
+
     div.appendChild(editIcon);
     div.appendChild(deleteIcon);
+
+    editIcon.src = './images/edit_icon.png';
+    deleteIcon.src = './images/delete_icon.png';
 
     allTaskDivs += div;
 }
 
 for(let i = 0; i < tasks.length; i++){
-    const editIcon = document.createElement('img')
-    const deleteIcon = document.createElement('img')
-    editIcon.src = './images/edit_icon.png';
-    deleteIcon.src = './images/delete_icon.png';
-
     let div = document.createElement('div');
     div.classList.add('task-description')
     toDoContent.appendChild(div)
     div.innerText = tasks[i].taskDesc;
+
+    editIcon = document.createElement('img')
+    deleteIcon = document.createElement('img')
+
     div.appendChild(editIcon);
     div.appendChild(deleteIcon);
+
+    editIcon.src = './images/edit_icon.png';
+    deleteIcon.src = './images/delete_icon.png';
 
     if(i == tasks.length -1) allTaskDivs = document.querySelectorAll('.tasks div');
 }
 
-toDoContent.addEventListener('mouseover', (e) => {
-    // if(e.target.matches('.task-description')) e.target.style.background = 'blue';
-});
