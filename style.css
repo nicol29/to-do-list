@@ -39,8 +39,8 @@ form {
 img[src^="./images/edit"]{
     width: 1.25rem;
     height: auto;
-    margin-left: auto;
     display: none;
+    margin-left: auto;
 }
 
 img[src^="./images/delete"]{
@@ -49,11 +49,13 @@ img[src^="./images/delete"]{
     display: none;
 }
 
+.task-description:hover > img {
+    display: block;
+} 
 
 .tasks div {
     font-size: 1.25rem;
 }
 
-.task-description:hover > img {
-    display: block;
-} 
+
+

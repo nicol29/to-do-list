@@ -1,14 +1,11 @@
 let submitButton = document.querySelector('.add-button');
 let inputField = document.querySelector('.add-field');
 let toDoContent = document.querySelector('.tasks');
-let form = document.querySelector('form');
-
-let isHovering = false;
-let allTaskDivs;
-let editIcon;
-let deleteIcon;
 
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+let editIcon;
+let deleteIcon;
 
 
 submitButton.addEventListener('click', () => {
@@ -37,8 +34,20 @@ let appendToDoc = (taskDesc) => {
 
     editIcon.src = './images/edit_icon.png';
     deleteIcon.src = './images/delete_icon.png';
+}
 
-    allTaskDivs += div;
+let deleteTask = (whatTaskToDelete) => {
+    let correspondingTask;
+
+    for(let i = 0; i < tasks.length; i++){
+        correspondingTask = JSON.parse(localStorage.getItem('tasks'))[i].taskDesc;
+        if(correspondingTask == whatTaskToDelete.innerText) {
+            tasks.splice(i, 1);
+
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            whatTaskToDelete.remove();
+        }
+    }
 }
 
 for(let i = 0; i < tasks.length; i++){
@@ -55,7 +64,13 @@ for(let i = 0; i < tasks.length; i++){
 
     editIcon.src = './images/edit_icon.png';
     deleteIcon.src = './images/delete_icon.png';
-
-    if(i == tasks.length -1) allTaskDivs = document.querySelectorAll('.tasks div');
 }
+
+toDoContent.addEventListener('click', (e) => {
+    if(e.target.matches('img[src*="edit"]')) {
+
+    } else{
+        deleteTask(e.target.parentNode);
+    }
+})
 
