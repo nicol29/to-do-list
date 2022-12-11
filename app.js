@@ -111,7 +111,7 @@ for(let i = 0; i < tasks.length; i++){
 
 
 submitButton.addEventListener('click', () => {
-    addToStorage(inputField.value);
+    if(inputField.value) addToStorage(inputField.value);
     inputField.value = '';
 });
 
